@@ -14,5 +14,6 @@ class ProductController extends GetxController {
 
   void fetchProducts() async {
     productList.value = await RemoteServices.fetchProducts();
+    isLoading.value = false;
   }
 }
