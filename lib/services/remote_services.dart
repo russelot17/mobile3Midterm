@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:shopx/models/product.dart';
 
@@ -9,7 +11,12 @@ class RemoteServices {
         'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline'));
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      return <the list of product from the jsonString>;
+      // Map<String, dynamic> myMap = json.decode(jsonString);
+      var products = (json.decode(jsonString) as List)
+          .map((i) => Product.fromJson(i))
+          .toList();
+      return products;
+      // return <the list of product from the jsonString>;
     } else {
       //show error message
       return null;
