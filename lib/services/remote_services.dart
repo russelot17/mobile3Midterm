@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shopx/models/product.dart';
 
@@ -13,7 +14,7 @@ class RemoteServices {
       return products;
       // return <the list of product from the jsonString>;
     } else {
-      //show error message
+      Get.snackbar("No products found!", "Please reload the app.");
       return null;
     }
   }
